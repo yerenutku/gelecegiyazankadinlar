@@ -6,6 +6,10 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context="com.erenutku.myapplication.SecondActivity">
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_face_black_24dp"/>
 
     <ListView
         android:id="@+id/lvList"

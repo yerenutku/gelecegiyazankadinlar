@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Button btNewActivity;
-    private EditText et1,et2;
+    private EditText et1, et2;
+    private String email = "gy@gmail.com", pass = "12345";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
         btNewActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                startActivity(intent);
+                if (et1.getText().toString().equals(email) && et2.getText().toString().equals(pass)) {
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "hatalı giriş", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

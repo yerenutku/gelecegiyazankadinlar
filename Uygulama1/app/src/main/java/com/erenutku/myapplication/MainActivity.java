@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private Button btNewActivity;
     private EditText et1, et2;
-    private String email = "gy@gmail.com", pass = "12345";
+    private String email = "gy", pass = "12345";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         btNewActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (et1.getText().toString().equals(email) && et2.getText().toString().equals(pass)) {
+                if (et1.getText().toString().trim().equals(email) && et2.getText().toString().equals(pass)) {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    intent.putExtra("key_email",et1.getText().toString());
                     startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this, "hatalı giriş", Toast.LENGTH_LONG).show();

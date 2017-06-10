@@ -23,7 +23,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        String email = getIntent().getStringExtra("key_email");
+        getSupportActionBar().setTitle("Hoşgeldin: "+email);
         lvList = (ListView) findViewById(R.id.lvList);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, ulkeler);
         lvList.setAdapter(adapter);

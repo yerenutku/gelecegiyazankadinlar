@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="ulke_secimi">Seçilen Ülke</string>
+    <string name="hint_email">email</string>
+    <string name="hint_pass">pass</string>
+    <string name="tiklandi">tıklandı</string>
 </resources>

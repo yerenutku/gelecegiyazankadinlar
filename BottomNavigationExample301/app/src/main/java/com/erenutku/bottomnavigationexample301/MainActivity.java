@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,9 +19,6 @@ public class MainActivity extends AppCompatActivity {
         mSharedPreferences = getSharedPreferences("sharedpreferences_bottom", MODE_PRIVATE);
         mEditor = mSharedPreferences.edit();
 
-        TextView mTextView = (TextView) findViewById(R.id.tvLastClick);
-
-        mTextView.setText(mSharedPreferences.getString(KEY_CLICK, "henüz atama yapılmamış"));
     }
 
     @Override

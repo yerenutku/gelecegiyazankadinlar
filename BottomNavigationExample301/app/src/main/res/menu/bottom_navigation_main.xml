@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_favorites"
-        android:enabled="true"
+        android:id="@+id/action_face"
+        android:checked="true"
         android:icon="@drawable/ic_face_black_24dp"
         android:title="Surat"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_schedules"
-        android:enabled="false"
+        android:id="@+id/action_likes"
+        android:checked="false"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:title="Favoriler"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_music"
-        android:enabled="false"
+        android:id="@+id/action_credit"
+        android:checked="false"
         android:icon="@drawable/ic_copyright_black_24dp"
         android:title="Info"
         app:showAsAction="ifRoom" />

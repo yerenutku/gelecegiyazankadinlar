@@ -5,8 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.erenutku.bottomnavigationexample301.MainActivity">
+    <Button
+        android:id="@+id/btClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TIKLA"/>
 
     <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bnvMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

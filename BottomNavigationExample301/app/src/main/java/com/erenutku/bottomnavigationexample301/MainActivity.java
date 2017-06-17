@@ -2,6 +2,8 @@ package com.erenutku.bottomnavigationexample301;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
     SharedPreferences.Editor mEditor;
     public static final String KEY_CLICK = "tiklanan";
+    private BottomNavigationView mBnvMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +21,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mSharedPreferences = getSharedPreferences("sharedpreferences_bottom", MODE_PRIVATE);
         mEditor = mSharedPreferences.edit();
-
+        mBnvMain = (BottomNavigationView) findViewById(R.id.bnvMain);
+        mBnvMain.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_face:
+                        break;
+                    case R.id.action_likes:
+                        break;
+                    case R.id.action_credit:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override

@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.erenutku.bottomnavigationexample301.MainActivity">
-    <Button
-        android:id="@+id/btClick"
+    <fragment
+        android:id="@+id/fMain"
+        android:name="com.erenutku.bottomnavigationexample301.FirstFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TIKLA"/>
-
+        android:layout_height="match_parent"
+        />
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bnvMain"
         android:layout_width="match_parent"

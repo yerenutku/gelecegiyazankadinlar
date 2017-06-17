@@ -24,12 +24,10 @@ public class MainActivity extends AppCompatActivity {
         mSharedPreferences = getSharedPreferences("sharedpreferences_bottom", MODE_PRIVATE);
         mEditor = mSharedPreferences.edit();
 
-        final FirstFragment fragment1 = FirstFragment.newInstance("bu fragment 1");
-        final FirstFragment fragment2 = FirstFragment.newInstance("bu fragment 2");
-        final FirstFragment fragment3 = FirstFragment.newInstance("bu fragment 3");
-
+        final FirstFragment fragment1 = FirstFragment.newInstance("Hoşgeldiniz");
+        final SecondFragment secondFragment = new SecondFragment();
         mFragmentManager = getSupportFragmentManager();
-
+        mFragmentManager.beginTransaction().replace(R.id.fMain, fragment1).commit();
 
         mBnvMain = (BottomNavigationView) findViewById(R.id.bnvMain);
         mBnvMain.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -40,10 +38,9 @@ public class MainActivity extends AppCompatActivity {
                         mFragmentManager.beginTransaction().replace(R.id.fMain, fragment1).commit();
                         break;
                     case R.id.action_likes:
-                        mFragmentManager.beginTransaction().replace(R.id.fMain, fragment2).commit();
+                        mFragmentManager.beginTransaction().replace(R.id.fMain, secondFragment).commit();
                         break;
                     case R.id.action_credit:
-                        mFragmentManager.beginTransaction().replace(R.id.fMain, fragment3).commit();
                         break;
                 }
                 return true;

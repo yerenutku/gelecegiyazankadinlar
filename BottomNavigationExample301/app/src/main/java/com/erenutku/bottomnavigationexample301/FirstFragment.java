@@ -14,7 +14,7 @@ import android.widget.TextView;
  */
 public class FirstFragment extends Fragment {
     private String text;
-
+    private static FirstFragment mFirstFragment;
     public FirstFragment() {
         // Required empty public constructor
     }
@@ -23,6 +23,13 @@ public class FirstFragment extends Fragment {
         FirstFragment firstFragment = new FirstFragment();
         firstFragment.text = text;
         return firstFragment;
+    }
+    //singleton yapısı
+    public static FirstFragment getInstance(){
+        if (mFirstFragment == null){
+            mFirstFragment = new FirstFragment();
+        }
+        return mFirstFragment;
     }
 
     @Override

@@ -6,9 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.erenutku.bottomnavigationexample301.models.MyJsonModel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
@@ -16,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
     public static final String KEY_CLICK = "tiklanan";
     private BottomNavigationView mBnvMain;
     private FragmentManager mFragmentManager;
+    private String myJson = "{\n" +
+            "  \"cinsiyet\": true,\n" +
+            "  \"yasi\": 24,\n" +
+            "  \"ismi\": \"Eren Utku\"\n" +
+            "}";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mSharedPreferences = getSharedPreferences("sharedpreferences_bottom", MODE_PRIVATE);
         mEditor = mSharedPreferences.edit();
+
+        //region json ornegi, onemsiz
+        Log.d("JSON", myJson);
+        Gson gson = new GsonBuilder().create();
+        MyJsonModel myJsonModel = gson.fromJson(myJson, MyJsonModel.class);
+        Log.d("GSON",myJsonModel.getIsmi());
+        Log.d("GSON",String.valueOf(myJsonModel.getAge()));
+        Log.d("GSON",myJsonModel.isCinsiyet()+"");
+        //endregion
 
         final FirstFragment fragment1 = FirstFragment.newInstance("Hoşgeldiniz");
         final SecondFragment secondFragment = new SecondFragment();

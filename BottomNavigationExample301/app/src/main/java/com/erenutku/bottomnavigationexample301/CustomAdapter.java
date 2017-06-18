@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.erenutku.bottomnavigationexample301.models.CustomModel;
+
 import java.util.ArrayList;
 
 /**

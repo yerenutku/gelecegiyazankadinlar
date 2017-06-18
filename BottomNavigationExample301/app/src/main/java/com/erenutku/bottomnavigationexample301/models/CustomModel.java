@@ -1,4 +1,4 @@
-package com.erenutku.bottomnavigationexample301;
+package com.erenutku.bottomnavigationexample301.models;
 
 /**
  * Created by yutku on 17/06/17.

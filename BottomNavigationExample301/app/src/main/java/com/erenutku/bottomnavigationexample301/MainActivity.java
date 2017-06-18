@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
             "  \"yasi\": 24,\n" +
             "  \"ismi\": \"Eren Utku\"\n" +
             "}";
+    public static final String URL= "https://raw.githubusercontent.com/yerenutku/cheersgamebackend/gh-pages/backend/games_tr.json?token=AH5kQAkrwQGz58z1WzdQEpHF2gYuiRypks5ZT62twA%3D%3D";
+    //region hard coded json string
     private String drinkinggames_json = "{\n" +
             "  \"game_version\": \"1.0.4\",\n" +
             "  \"json_version\": \"1.0.4\",\n" +
@@ -185,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             "    }\n" +
             "  ]\n" +
             "}\n";
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mSharedPreferences = getSharedPreferences("sharedpreferences_bottom", MODE_PRIVATE);
         mEditor = mSharedPreferences.edit();
-        Gson gson = new GsonBuilder().create();
+        final Gson gson = new GsonBuilder().create();
         //region json ornegi, onemsiz
         Log.d("JSON", myJson);
         MyJsonModel myJsonModel = gson.fromJson(myJson, MyJsonModel.class);
@@ -207,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             Log.d("DRINKING", benimmodelim.getGames().get(i).getShortexplanation());
         }
-
 
         final FirstFragment fragment1 = FirstFragment.newInstance("Hoşgeldiniz");
         final SecondFragment secondFragment = new SecondFragment();

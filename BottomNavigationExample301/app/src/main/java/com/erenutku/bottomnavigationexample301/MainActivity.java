@@ -1,5 +1,6 @@
 package com.erenutku.bottomnavigationexample301;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,8 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.erenutku.bottomnavigationexample301.models.CustomJsonModel;
 import com.erenutku.bottomnavigationexample301.models.MyJsonModel;
+import com.erenutku.bottomnavigationexample301.models.OgrencilerResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
             "  \"yasi\": 24,\n" +
             "  \"ismi\": \"Eren Utku\"\n" +
             "}";
-    public static final String URL= "https://raw.githubusercontent.com/yerenutku/cheersgamebackend/gh-pages/backend/games_tr.json?token=AH5kQAkrwQGz58z1WzdQEpHF2gYuiRypks5ZT62twA%3D%3D";
+    public static final String URL = "https://raw.githubusercontent.com/yerenutku/cheersgamebackend/gh-pages/backend/ogrenciler.json?token=AH5kQFsXAGrOEvRVjWozlKmQFiFCJXEyks5ZT7ztwA%3D%3D";
+    private OgrencilerResponse mResponse;
+    private SecondFragment secondFragment;
+
     //region hard coded json string
     private String drinkinggames_json = "{\n" +
             "  \"game_version\": \"1.0.4\",\n" +
@@ -211,8 +222,28 @@ public class MainActivity extends AppCompatActivity {
             Log.d("DRINKING", benimmodelim.getGames().get(i).getShortexplanation());
         }
 
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final ProgressDialog dialog = ProgressDialog.show(this, "",
+                "Loading. Please wait...", true);
+        StringRequest stringRequest =
+                new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("response","geldi");
+                        mResponse = gson.fromJson(response,OgrencilerResponse.class);
+                        secondFragment = SecondFragment.getInstance(mResponse);
+                        dialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue.add(stringRequest);
+
         final FirstFragment fragment1 = FirstFragment.newInstance("Hoşgeldiniz");
-        final SecondFragment secondFragment = new SecondFragment();
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.beginTransaction().replace(R.id.fMain, fragment1).commit();
 

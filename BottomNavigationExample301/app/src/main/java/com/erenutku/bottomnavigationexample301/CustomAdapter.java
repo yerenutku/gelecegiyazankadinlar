@@ -8,32 +8,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.erenutku.bottomnavigationexample301.models.CustomModel;
-
-import java.util.ArrayList;
+import com.erenutku.bottomnavigationexample301.models.Ogrenci;
+import com.erenutku.bottomnavigationexample301.models.OgrencilerResponse;
 
 /**
  * Created by yutku on 17/06/17.
  */
 
 public class CustomAdapter extends BaseAdapter {
-    private ArrayList<CustomModel> mArrayList;
+    private OgrencilerResponse mOgrencilerResponse;
     private Context mContext;
 
-    public CustomAdapter(Context context, ArrayList<CustomModel> arrayList){
-        mArrayList = arrayList;
+    public CustomAdapter(Context context, OgrencilerResponse ogrencilerResponse){
+        mOgrencilerResponse = ogrencilerResponse;
         mContext = context;
     }
 
 
     @Override
     public int getCount() {
-        return mArrayList.size();
+        return mOgrencilerResponse.getOgrenciler().size();
     }
 
     @Override
-    public CustomModel getItem(int i) {
-        return mArrayList.get(i);
+    public Ogrenci getItem(int i) {
+        return mOgrencilerResponse.getOgrenciler().get(i);
     }
 
     @Override
@@ -48,8 +47,7 @@ public class CustomAdapter extends BaseAdapter {
         View rootView = inflater.inflate(R.layout.custom_listview_layout,null);
         ImageView imageView = (ImageView) rootView.findViewById(R.id.ivPp);
         TextView textView = (TextView) rootView.findViewById(R.id.tvText);
-        textView.setText(mArrayList.get(i).getText());
-        imageView.setBackgroundResource(mArrayList.get(i).getResourceId());
+        textView.setText(mOgrencilerResponse.getOgrenciler().get(i).getOgrenci()+":"+mOgrencilerResponse.getOgrenciler().get(i).getYas());
         return rootView;
     }
 }

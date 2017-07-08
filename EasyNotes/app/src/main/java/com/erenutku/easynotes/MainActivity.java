@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_face:
+                    case R.id.action_notes:
                         mFragmentManager.beginTransaction().replace(R.id.fMain, fragment1).commit();
                         break;
                     case R.id.action_likes:

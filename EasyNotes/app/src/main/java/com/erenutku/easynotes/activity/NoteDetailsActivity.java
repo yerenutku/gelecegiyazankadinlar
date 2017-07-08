@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.erenutku.easynotes.R;
-import com.erenutku.easynotes.models.NoteModel;
+import com.erenutku.easynotes.model.NoteModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

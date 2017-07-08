@@ -1,4 +1,4 @@
-package com.erenutku.easynotes.models;
+package com.erenutku.easynotes.model;
 
 /**
  * Created by yutku on 08/07/17.

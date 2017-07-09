@@ -62,7 +62,7 @@ public class FirstFragment extends Fragment {
         lvNotes = (ListView) view.findViewById(R.id.lvNotes);
         mNotesAdapter = new NotesAdapter(getContext(),mNoteList);
         lvNotes.setAdapter(mNotesAdapter);
-
+        mNoteList.clear();
         mDatabaseRoot = FirebaseDatabase.getInstance().getReference();
         mDatabaseRoot.child("notes").addChildEventListener(new ChildEventListener() {
             @Override
@@ -107,6 +107,7 @@ public class FirstFragment extends Fragment {
                 intent.putExtra(NoteDetailsActivity.EXTRA_TITLE,mNoteList.get(position).getTitle());
                 intent.putExtra(NoteDetailsActivity.EXTRA_BODY,mNoteList.get(position).getBody());
                 intent.putExtra(NoteDetailsActivity.EXTRA_KEY,mNoteList.get(position).getKey());
+                intent.putExtra(NoteDetailsActivity.EXTRA_ISFAVORITE,mNoteList.get(position).isFavorite());
                 startActivity(intent);
             }
         });

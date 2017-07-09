@@ -49,6 +49,7 @@ public class NoteModel {
     }
 
     public void setFavorite(boolean favorite) {
-        favorite = favorite;
+        this.favorite = favorite;
     }
+
 }

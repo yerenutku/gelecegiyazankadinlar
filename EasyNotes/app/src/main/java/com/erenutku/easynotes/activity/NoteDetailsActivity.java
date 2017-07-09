@@ -16,6 +16,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
     private Button btSave;
     private DatabaseReference mDatabaseRoot;
     private DatabaseReference mDatabaseNotes;
+    private String mKey;
+    public static final String EXTRA_TITLE = "extra_title";
+    public static final String EXTRA_BODY = "extra_body";
+    public static final String EXTRA_KEY = "extra_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,18 @@ public class NoteDetailsActivity extends AppCompatActivity {
         mDatabaseRoot = FirebaseDatabase.getInstance().getReference();
         mDatabaseNotes = mDatabaseRoot.child("notes");
         initViews();
+
+        if (getIntent() != null && getIntent().hasExtra(EXTRA_TITLE)
+                && getIntent().hasExtra(EXTRA_BODY)) {
+            String title = getIntent().getStringExtra(EXTRA_TITLE);
+            etTitle.setText(title);
+            String body = getIntent().getStringExtra(EXTRA_BODY);
+            etBody.setText(body);
+            btSave.setText("Düzenle");
+            mKey = getIntent().getStringExtra(EXTRA_KEY);
+
+        }
+
     }
 
     private void initViews() {
@@ -33,8 +49,21 @@ public class NoteDetailsActivity extends AppCompatActivity {
         btSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NoteModel noteModel = new NoteModel(etTitle.getText().toString(), etBody.getText().toString(), false);
-                mDatabaseNotes.push().setValue(noteModel);
+                if (mKey == null) {
+                    String key = mDatabaseNotes.push().getKey();
+                    mDatabaseNotes.child(key).setValue(
+                            new NoteModel(etTitle.getText().toString(),
+                                    etBody.getText().toString(),
+                                    false,
+                                    key));
+                } else {
+                    mDatabaseNotes.child(mKey).setValue(new NoteModel(
+                            etTitle.getText().toString(),
+                            etBody.getText().toString(),
+                            false,
+                            mKey
+                    ));
+                }
                 finish();
             }
         });

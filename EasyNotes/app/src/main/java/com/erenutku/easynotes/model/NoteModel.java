@@ -8,14 +8,24 @@ public class NoteModel {
     private String title;
     private String body;
     private boolean favorite;
+    private String key;
 
     public NoteModel() {
     }
 
-    public NoteModel(String title, String body, boolean favorite) {
+    public NoteModel(String title, String body, boolean favorite, String key) {
         this.title = title;
         this.body = body;
         this.favorite = favorite;
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getTitle() {

@@ -10,3 +10,4 @@
 .idea
 local.properties
 build
+app/google-services.json
